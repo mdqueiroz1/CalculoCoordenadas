@@ -18,57 +18,53 @@ void insere_dados(){
 	15,832655-15,833114
 	48,056063-48,055921
 	*/
-	float tutor,x_tutor,y_tutor,x_pet,y_pet,pet;
+	float tutor,xTutor,yTutor,xPet,yPet,pet;
 
 	printf("Informe as coordenadas do tutor\n");
-	scanf("%f", &x_tutor);
-	scanf("%f", &y_tutor);
-	
+	scanf("%f", &xTutor);
+	scanf("%f", &yTutor);
+	fflush(stdin);
 	printf("Informe as coordenadas do pet\n", );
-	scanf("%f", &x_pet);
-	scanf("%f", &y_pet);
+	scanf("%f", &xPet);
+	scanf("%f", &yPet);
 
-	tutor = (x_tutor * -1) + (y_tutor * -1) * 111.11;
-	pet = (x_pet * -1) + (y_pet * -1) * 111.11;
+	CalcularDistancia(xTutor,yTutor,xPet,yPet);
 
-	dist2pontos(tutor, pet);
 }
 
-/*Função feita para calcular a distancia entre os dois pontos, retornando a
-distancia já calculada.*/
-float dist2pontos(float DLA, float DLO){
-
-	float DISTANCIA;
-	
-	DISTANCIA = hypot(DLA,DLO); //sqrt(pow(DLA,2)+pow(DLO,2));
-
-	return DISTANCIA;
-}
 float ParaRad(float grau){
 	float rad;
 	rad = grau * (PI/180);
 
 	return rad;
 }
+/*
+
+*/
+
+
 float CalcularDistancia( float nLat1, float nLon1, float nLat2, float nLon2 )
 {
-    float nRadius = 6371; // Raio da terra em KM
- 
-    float nDLat = ParaRad(nLat2 - nLat1);
-    float nDLon = ParaRad(nLon2 - nLon1);
+    float nRadius, nDLat,nDLon,nA, nC,nD;
+ 	
+ 	nRadius = 6371; // Raio da terra em KM
+    
+    nDLat = ParaRad(nLat2 - nLat1);
+    nDLon = ParaRad(nLon2 - nLon1);
  
     nLat1 =  ParaRad(nLat1);
     nLat2 =  ParaRad(nLat2);
  
-    float nA = pow ( sin(nDLat/2), 2 ) + cos(nLat1) * cos(nLat2) * pow ( sin(nDLon/2), 2 );
+    nA = pow ( sin(nDLat/2), 2 ) + cos(nLat1) * cos(nLat2) * pow ( sin(nDLon/2), 2 );
  
-    float nC = 2 * atan2( sqrt(nA), sqrt( 1 - nA ));
-    float nD = nRadius * nC;
+    nC = 2 * atan2( sqrt(nA), sqrt( 1 - nA ));
+    nD = nRadius * nC;
  
-    return nD; // Return our calculated distance
+    return nD/1000; // Retorna a distancia/1000 pois está em KM.
 }
-/*Foi utilizado a formula de haversine para o calculo de distância entre 
+/*Foi utilizado a formula de HAVERSINE para o calculo de distância entre 
 os dois pontos.
+fonte: https://pt.wikipedia.org/wiki/Fórmula_de_Haversine
 */
 void alerta(float DISTANCIA){
 	
