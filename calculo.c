@@ -49,18 +49,18 @@ float CalcularDistancia( float nLat1, float nLon1, float nLat2, float nLon2 )
  	
  	nRadius = 6371; // Raio da terra em KM
     
-    nDLat = ParaRad(nLat2 - nLat1);
-    nDLon = ParaRad(nLon2 - nLon1);
+    nDLat = (nLat2 - nLat1);
+    nDLon = (nLon2 - nLon1);
  
-    nLat1 =  ParaRad(nLat1);
-    nLat2 =  ParaRad(nLat2);
+    nLat1 =  (nLat1);
+    nLat2 =  (nLat2);
  
     nA = pow ( sin(nDLat/2), 2 ) + cos(nLat1) * cos(nLat2) * pow ( sin(nDLon/2), 2 );
  
     nC = 2 * atan2( sqrt(nA), sqrt( 1 - nA ));
     nD = nRadius * nC;
  
-    return nD/1000; // Retorna a distancia/1000 pois está em KM.
+    return nRadius* nD *1000; // Retorna a distancia/1000 pois está em KM.
 }
 /*Foi utilizado a formula de HAVERSINE para o calculo de distância entre 
 os dois pontos.
