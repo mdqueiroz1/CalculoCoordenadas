@@ -1,18 +1,14 @@
-/*
-https://www.pilotopolicial.com.br/calculando-distancias-e-direcoes-utilizando-coordenadas-geograficas/
-*/
-
 #include <stdio.h>
 #include <math.h>
 #define PI 3.14159265358979323846
-#define DISTMAX 20 /* Foi utilizado uma definição de constante para que seja facil
+#define DISTMAX 20 /* Foi utilizado uma definição de constante para que seja fácil
 a mudança, caso necessário for.*/
 
 void insere_dados(){
 	/*
-		coordenadas que abrangem toda a praça
-		-15.833468 > x > -15.833019
-		-48.057221 > y > -48.055902
+	coordenadas que abrangem toda a praça
+	-15.833468 > x > -15.833019
+	-48.057221 > y > -48.055902
 	inserção para o calculo da distancia
 	
 	15,832655-15,833114
@@ -24,24 +20,13 @@ void insere_dados(){
 	scanf("%f", &xTutor);
 	scanf("%f", &yTutor);
 	fflush(stdin);
-	printf("Informe as coordenadas do pet\n", );
+	printf("Informe as coordenadas do pet\n");
 	scanf("%f", &xPet);
 	scanf("%f", &yPet);
 
 	CalcularDistancia(xTutor,yTutor,xPet,yPet);
 
 }
-
-float ParaRad(float grau){
-	float rad;
-	rad = grau * (PI/180);
-
-	return rad;
-}
-/*
-
-*/
-
 
 float CalcularDistancia( float nLat1, float nLon1, float nLat2, float nLon2 )
 {
